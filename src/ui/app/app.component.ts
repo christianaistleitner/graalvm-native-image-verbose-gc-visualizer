@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TokenizerService } from "./services/tokenizer.service";
-import { ParserService } from "./services/parser.service";
+import { TokenizerService } from "./services/parser/tokenizer.service";
+import { ParserService } from "./services/parser/parser.service";
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,9 @@ export class AppComponent {
 
   onLogsAvailable(text: string) {
     console.log(text);
-    let tokens = this.tokenizerService.tokenize(text);
+    const tokens = this.tokenizerService.tokenize(text);
+    console.log(tokens);
+    const data = this.parserService.parse(tokens);
+    console.log(data);
   }
 }
