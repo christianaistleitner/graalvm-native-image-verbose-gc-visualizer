@@ -31,6 +31,39 @@ export class ParserService {
   }
 
   parse(tokens: Array<string>): Data {
+    const scanner = new Scanner(tokens);
+    while (scanner.isNotEmpty()) {
+      scanner.search("[", "[")
+
+      if (scanner.check(/[0-9]*/)) {
+        const timestamp = scanner.get();
+        scanner.advance();
+      } else continue;
+
+      if (scanner.expect("GC", ":", "before", "epoch", ":")) {
+      } else continue;
+
+      if (scanner.check(/[0-9]*/)) {
+        const epoch = scanner.get();
+        scanner.advance();
+      } else continue;
+
+      if (scanner.expect("cause", ":")) {
+      } else continue;
+
+      const cause = scanner.get();
+      scanner.advance();
+
+      if (scanner.expect(":", "Young", "generation", ":")) {
+      } else continue;
+
+      // alert(cause);
+
+      // TODO: ...
+
+      scanner.advance();
+    }
+
     const result: Data = {
       HeapPolicyParameters: undefined,
       NativeImageHeapBoundaries: undefined
@@ -115,5 +148,58 @@ export class ParserService {
         }
       }
     }
+  }
+}
+
+class Scanner {
+
+  private cursor: number = 0;
+
+  constructor(private tokens: Array<string>) {
+
+  }
+
+  expect(...tokens: string[]): boolean {
+    for (let token of tokens) {
+      if (this.tokens.at(this.cursor) == token) {
+        this.advance();
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  expectPattern(regex: RegExp): boolean {
+    const result = regex.test(this.get());
+    this.cursor++;
+    return result;
+  }
+
+  check(regex: RegExp): boolean {
+    return regex.test(this.get());
+  }
+
+  search(...token: string[]): boolean {
+    let i = 0;
+    while (i < token.length && this.isNotEmpty()) {
+      if (this.tokens.at(this.cursor) == token[i]) {
+        i++;
+      }
+      this.advance();
+    }
+    return this.isNotEmpty();
+  }
+
+  advance() {
+    this.cursor++;
+  }
+
+  get(): string {
+    return this.tokens.at(this.cursor)!;
+  }
+
+  isNotEmpty(): boolean {
+    return this.cursor < this.tokens.length;
   }
 }
