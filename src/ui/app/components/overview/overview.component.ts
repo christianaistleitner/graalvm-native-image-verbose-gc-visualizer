@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Data } from "../../types/types";
 
 @Component({
   selector: 'app-overview',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent {
+
+  @Input()
+  data: Data | undefined
+
 
 }

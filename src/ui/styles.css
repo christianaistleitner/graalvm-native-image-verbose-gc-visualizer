@@ -11,3 +11,7 @@ body {
   color: white;
   font-size: 13px;
 }
+
+h2 {
+  font-weight: 400;
+}
