@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid #202020;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  min-height: 100%;
+  width: 200px;
+  border-right: 2px solid #202020;
+}
+
+.content {
+  min-height: 100%;
+  width: 100%;
+}

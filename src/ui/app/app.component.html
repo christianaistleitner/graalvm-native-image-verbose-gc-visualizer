@@ -1,2 +1,3 @@
-<app-import-file (content)="onLogsAvailable($event)"></app-import-file>
-<p> or run directly </p>
+<app-import-file *ngIf="!data" (content)="onLogsAvailable($event)"></app-import-file>
+<app-sidebar *ngIf="data" class="sidebar"></app-sidebar>
+<app-overview *ngIf="data" class="content"></app-overview>
