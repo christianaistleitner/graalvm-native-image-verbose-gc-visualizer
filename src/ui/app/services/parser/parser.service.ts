@@ -15,13 +15,15 @@ export class ParserService {
     const scanner = new Scanner(tokens);
     while (scanner.isNotEmpty()) {
       const entry: Data = {
-        timers: new Map()
+        policy: "", type: "", cause: "", before: [], after: [], epoch: 0, timestamp: 0, timers: new Map()
       }
 
+      // Search for start pattern
       scanner.search("[", "[")
 
+      // Collection properties
       if (scanner.check(/[0-9]*/)) {
-        const timestamp = scanner.get();
+        entry.timestamp = Number(scanner.get());
         scanner.advance();
       } else continue;
 
@@ -29,14 +31,14 @@ export class ParserService {
       } else continue;
 
       if (scanner.check(/[0-9]*/)) {
-        const epoch = scanner.get();
+        entry.epoch = Number(scanner.get());
         scanner.advance();
       } else continue;
 
       if (scanner.expect("cause", ":")) {
       } else continue;
 
-      const cause = scanner.get();
+      entry.cause = scanner.get();
       scanner.advance();
 
       scanner.search("Young", "generation", ":")
@@ -84,16 +86,11 @@ export class ParserService {
         scanner.advance();
       }
 
-      scanner.expect("]", "[");
-
-
-      if (scanner.check(/[0-9]*/)) {
-        const timestamp = scanner.get();
-        scanner.advance();
-      } else continue;
-
-      if (scanner.expect("GC", ":", "after", "epoch", ":")) {
-      } else continue;
+      // Collection properties (retrospect)
+      scanner.search("policy", ":");
+      entry.policy = scanner.get();
+      scanner.search("type", ":");
+      entry.type = scanner.get();
 
       scanner.search("Young", "generation", ":")
       scanner.search("Eden", ":")

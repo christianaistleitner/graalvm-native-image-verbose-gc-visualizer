@@ -1,46 +1,18 @@
 export type Data = {
+  timestamp: number,
+  epoch: number,
+  cause: string,
+  policy: string;
+  type: string,
+  before: Chunks[],
+  after: Chunks[],
   timers: Map<string, number>
 }
 
-export type HeapPolicyParameters = {
-  YoungGenerationSize: number,
-  MaximumHeapSize: number,
-  MinimumHeapSize: number,
-  AlignedChunkSize: number,
-  LargeArrayThreshold: number
-}
-
-export type NativeImageHeapBoundaries = {
-  ReadOnly: {
-    Primitives: {
-      Start: string | undefined,
-      End: string | undefined
-    },
-    References: {
-      Start: string | undefined,
-      End: string | undefined
-    },
-    Relocatables: {
-      Start: string | undefined,
-      End: string | undefined
-    },
-    Huge: {
-      Start: string | undefined,
-      End: string | undefined
-    }
-  },
-  Writable: {
-    Primitives: {
-      Start: string | undefined,
-      End: string | undefined
-    },
-    References: {
-      Start: string | undefined,
-      End: string | undefined
-    },
-    Huge: {
-      Start: string | undefined,
-      End: string | undefined
-    }
-  }
+export type Chunks = {
+  gen: string,
+  space: string,
+  isAligned: boolean,
+  start: string,
+  top: string
 }
