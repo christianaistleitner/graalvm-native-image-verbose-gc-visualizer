@@ -1,6 +1,5 @@
 export type Data = {
-  HeapPolicyParameters: HeapPolicyParameters | undefined
-  NativeImageHeapBoundaries: NativeImageHeapBoundaries | undefined;
+  timers: Map<string, number>
 }
 
 export type HeapPolicyParameters = {

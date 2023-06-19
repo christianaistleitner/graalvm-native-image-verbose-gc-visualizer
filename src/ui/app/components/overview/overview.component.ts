@@ -9,7 +9,7 @@ import { Data } from "../../types/types";
 export class OverviewComponent {
 
   @Input()
-  data: Data | undefined
+  data: Data[] = []
 
 
 }

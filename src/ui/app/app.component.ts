@@ -15,7 +15,7 @@ export class AppComponent {
   ) {
   }
 
-  data: Data | undefined;
+  data: Data[] | undefined = undefined;
 
   onLogsAvailable(text: string) {
     console.log(text);

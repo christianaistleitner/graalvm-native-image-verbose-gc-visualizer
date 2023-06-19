@@ -1,0 +1,282 @@
+[Heap policy parameters:
+  YoungGenerationSize: 3247439872
+      MaximumHeapSize: 9743368192
+      MinimumHeapSize: 33554432
+     AlignedChunkSize: 1048576
+  LargeArrayThreshold: 131072]
+Native image heap boundaries:
+  ReadOnly Primitives: 0x00007fa1c4201028 - 0x00007fa1c432bb18
+  ReadOnly References: 0x00007fa1c432bb18 - 0x00007fa1c446bde8
+  ReadOnly Relocatables: 0x00007fa1c446c000 - 0x00007fa1c44d6fd0
+  Writable Primitives: 0x00007fa1c44d7000 - 0x00007fa1c45711b8
+  Writable References: 0x00007fa1c45711b8 - 0x00007fa1c477e510
+  Writable Huge: 0x0000000000000000 - 0x0000000000000000
+  ReadOnly Huge: 0x00007fa1c4800030 - 0x00007fa1c48e96c8
+[[195665152779072 GC: before  epoch: 1  cause: CollectOnAllocationHeap:
+  Young generation:
+    Eden:
+      edenSpace:
+        aligned: 50331648/48 unaligned: 131088/1
+        aligned chunks:
+          0x00007fa1c3500000 (0x00007fa1c3501028-0x00007fa1c35010f0)
+          0x00007fa1b9800000 (0x00007fa1b9801028-0x00007fa1b98ffff8)
+          0x00007fa1b9a00000 (0x00007fa1b9a01028-0x00007fa1b9affff8)
+          0x00007fa1b9c00000 (0x00007fa1b9c01028-0x00007fa1b9cffff8)
+          0x00007fa1b9e00000 (0x00007fa1b9e01028-0x00007fa1b9effff0)
+          0x00007fa1ba000000 (0x00007fa1ba001028-0x00007fa1ba0ffff0)
+          0x00007fa1ba200000 (0x00007fa1ba201028-0x00007fa1ba2ffff0)
+          0x00007fa1ba400000 (0x00007fa1ba401028-0x00007fa1ba4ffff0)
+          0x00007fa1ba600000 (0x00007fa1ba601028-0x00007fa1ba6ffff0)
+          0x00007fa1ba800000 (0x00007fa1ba801028-0x00007fa1ba8fffe8)
+          0x00007fa1baa00000 (0x00007fa1baa01028-0x00007fa1baaffff0)
+          0x00007fa1bac00000 (0x00007fa1bac01028-0x00007fa1bacfffe8)
+          0x00007fa1bae00000 (0x00007fa1bae01028-0x00007fa1baf00000)
+          0x00007fa1bb000000 (0x00007fa1bb001028-0x00007fa1bb100000)
+          0x00007fa1bb200000 (0x00007fa1bb201028-0x00007fa1bb2fffe8)
+          0x00007fa1bb400000 (0x00007fa1bb401028-0x00007fa1bb500000)
+          0x00007fa1bb600000 (0x00007fa1bb601028-0x00007fa1bb700000)
+          0x00007fa1bb800000 (0x00007fa1bb801028-0x00007fa1bb8fffe8)
+          0x00007fa1bba00000 (0x00007fa1bba01028-0x00007fa1bbb00000)
+          0x00007fa1bbc00000 (0x00007fa1bbc01028-0x00007fa1bbcffff8)
+          0x00007fa1bbe00000 (0x00007fa1bbe01028-0x00007fa1bbeffff8)
+          0x00007fa1c0100000 (0x00007fa1c0101028-0x00007fa1c01fffe0)
+          0x00007fa1c0300000 (0x00007fa1c0301028-0x00007fa1c03ffff8)
+          0x00007fa1c0500000 (0x00007fa1c0501028-0x00007fa1c05ffff8)
+          0x00007fa1c0700000 (0x00007fa1c0701028-0x00007fa1c07fffe0)
+          0x00007fa1c0900000 (0x00007fa1c0901028-0x00007fa1c09ffff8)
+          0x00007fa1c0b00000 (0x00007fa1c0b01028-0x00007fa1c0bffff0)
+          0x00007fa1c0d00000 (0x00007fa1c0d01028-0x00007fa1c0dfffd8)
+          0x00007fa1c0f00000 (0x00007fa1c0f01028-0x00007fa1c0fffff0)
+          0x00007fa1c1100000 (0x00007fa1c1101028-0x00007fa1c11ffff0)
+          0x00007fa1c1300000 (0x00007fa1c1301028-0x00007fa1c13fffd8)
+          0x00007fa1c1500000 (0x00007fa1c1501028-0x00007fa1c15ffff0)
+          0x00007fa1c1700000 (0x00007fa1c1701028-0x00007fa1c1800000)
+          0x00007fa1c1900000 (0x00007fa1c1901028-0x00007fa1c1a00000)
+          0x00007fa1c1b00000 (0x00007fa1c1b01028-0x00007fa1c1c00000)
+          0x00007fa1c1d00000 (0x00007fa1c1d01028-0x00007fa1c1e00000)
+          0x00007fa1c1f00000 (0x00007fa1c1f01028-0x00007fa1c2000000)
+          0x00007fa1c2100000 (0x00007fa1c2101028-0x00007fa1c2200000)
+          0x00007fa1c2300000 (0x00007fa1c2301028-0x00007fa1c2400000)
+          0x00007fa1c2500000 (0x00007fa1c2501028-0x00007fa1c2600000)
+          0x00007fa1c2700000 (0x00007fa1c2701028-0x00007fa1c2800000)
+          0x00007fa1c2900000 (0x00007fa1c2901028-0x00007fa1c29ffff0)
+          0x00007fa1c2b00000 (0x00007fa1c2b01028-0x00007fa1c2bffff8)
+          0x00007fa1c2d00000 (0x00007fa1c2d01028-0x00007fa1c2dffff8)
+          0x00007fa1c2f00000 (0x00007fa1c2f01028-0x00007fa1c2fffff8)
+          0x00007fa1c3100000 (0x00007fa1c3101028-0x00007fa1c31ffff8)
+          0x00007fa1c3300000 (0x00007fa1c3301028-0x00007fa1c33ffff8)
+          0x00007fa1c3f00000 (0x00007fa1c3f01028-0x00007fa1c3ffffd8)
+        unaligned chunks:
+          0x00007fa1c4973000 (0x00007fa1c4973030-0x00007fa1c4993040)
+    Survivors:
+      Survivor-1 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-1 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-2 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-2 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-3 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-3 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-4 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-4 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-5 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-5 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-6 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-6 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-7 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-7 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-8 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-8 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-9 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-9 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-10 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-10 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-11 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-11 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-12 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-12 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-13 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-13 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-14 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-14 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-15 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-15 To:
+        aligned: 0/0 unaligned: 0/0
+  Old generation:
+    oldFromSpace:
+      aligned: 0/0 unaligned: 0/0
+    oldToSpace:
+      aligned: 0/0 unaligned: 0/0
+
+  Unused:
+    aligned: 0/0
+]
+ [195665155671679 GC: after   epoch: 1  cause: CollectOnAllocation  policy: adaptive  type: completeHeap:
+  Young generation:
+    Eden:
+      edenSpace:
+        aligned: 0/0 unaligned: 0/0
+    Survivors:
+      Survivor-1 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-1 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-2 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-2 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-3 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-3 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-4 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-4 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-5 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-5 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-6 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-6 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-7 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-7 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-8 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-8 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-9 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-9 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-10 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-10 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-11 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-11 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-12 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-12 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-13 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-13 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-14 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-14 To:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-15 From:
+        aligned: 0/0 unaligned: 0/0
+      Survivor-15 To:
+        aligned: 0/0 unaligned: 0/0
+  Old generation:
+    oldFromSpace:
+      aligned: 1048576/1 unaligned: 131088/1
+      aligned chunks:
+        0x00007fa1c3f00000 (0x00007fa1c3f01028-0x00007fa1c3facea8)
+      unaligned chunks:
+        0x00007fa1c4973000 (0x00007fa1c4973030-0x00007fa1c4993040)
+    oldToSpace:
+      aligned: 0/0 unaligned: 0/0
+
+  Unused:
+    aligned: 50331648/48
+    aligned chunks:
+      0x00007fa1b9600000 (0x00007fa1b9601028-0x00007fa1b9601028)
+      0x00007fa1c3300000 (0x00007fa1c3301028-0x00007fa1c3301028)
+      0x00007fa1c3100000 (0x00007fa1c3101028-0x00007fa1c3101028)
+      0x00007fa1c2f00000 (0x00007fa1c2f01028-0x00007fa1c2f01028)
+      0x00007fa1c2d00000 (0x00007fa1c2d01028-0x00007fa1c2d01028)
+      0x00007fa1c2b00000 (0x00007fa1c2b01028-0x00007fa1c2b01028)
+      0x00007fa1c2900000 (0x00007fa1c2901028-0x00007fa1c2901028)
+      0x00007fa1c2700000 (0x00007fa1c2701028-0x00007fa1c2701028)
+      0x00007fa1c2500000 (0x00007fa1c2501028-0x00007fa1c2501028)
+      0x00007fa1c2300000 (0x00007fa1c2301028-0x00007fa1c2301028)
+      0x00007fa1c2100000 (0x00007fa1c2101028-0x00007fa1c2101028)
+      0x00007fa1c1f00000 (0x00007fa1c1f01028-0x00007fa1c1f01028)
+      0x00007fa1c1d00000 (0x00007fa1c1d01028-0x00007fa1c1d01028)
+      0x00007fa1c1b00000 (0x00007fa1c1b01028-0x00007fa1c1b01028)
+      0x00007fa1c1900000 (0x00007fa1c1901028-0x00007fa1c1901028)
+      0x00007fa1c1700000 (0x00007fa1c1701028-0x00007fa1c1701028)
+      0x00007fa1c1500000 (0x00007fa1c1501028-0x00007fa1c1501028)
+      0x00007fa1c1300000 (0x00007fa1c1301028-0x00007fa1c1301028)
+      0x00007fa1c1100000 (0x00007fa1c1101028-0x00007fa1c1101028)
+      0x00007fa1c0f00000 (0x00007fa1c0f01028-0x00007fa1c0f01028)
+      0x00007fa1c0d00000 (0x00007fa1c0d01028-0x00007fa1c0d01028)
+      0x00007fa1c0b00000 (0x00007fa1c0b01028-0x00007fa1c0b01028)
+      0x00007fa1c0900000 (0x00007fa1c0901028-0x00007fa1c0901028)
+      0x00007fa1c0700000 (0x00007fa1c0701028-0x00007fa1c0701028)
+      0x00007fa1c0500000 (0x00007fa1c0501028-0x00007fa1c0501028)
+      0x00007fa1c0300000 (0x00007fa1c0301028-0x00007fa1c0301028)
+      0x00007fa1c0100000 (0x00007fa1c0101028-0x00007fa1c0101028)
+      0x00007fa1bbe00000 (0x00007fa1bbe01028-0x00007fa1bbe01028)
+      0x00007fa1bbc00000 (0x00007fa1bbc01028-0x00007fa1bbc01028)
+      0x00007fa1bba00000 (0x00007fa1bba01028-0x00007fa1bba01028)
+      0x00007fa1bb800000 (0x00007fa1bb801028-0x00007fa1bb801028)
+      0x00007fa1bb600000 (0x00007fa1bb601028-0x00007fa1bb601028)
+      0x00007fa1bb400000 (0x00007fa1bb401028-0x00007fa1bb401028)
+      0x00007fa1bb200000 (0x00007fa1bb201028-0x00007fa1bb201028)
+      0x00007fa1bb000000 (0x00007fa1bb001028-0x00007fa1bb001028)
+      0x00007fa1bae00000 (0x00007fa1bae01028-0x00007fa1bae01028)
+      0x00007fa1bac00000 (0x00007fa1bac01028-0x00007fa1bac01028)
+      0x00007fa1baa00000 (0x00007fa1baa01028-0x00007fa1baa01028)
+      0x00007fa1ba800000 (0x00007fa1ba801028-0x00007fa1ba801028)
+      0x00007fa1ba600000 (0x00007fa1ba601028-0x00007fa1ba601028)
+      0x00007fa1ba400000 (0x00007fa1ba401028-0x00007fa1ba401028)
+      0x00007fa1ba200000 (0x00007fa1ba201028-0x00007fa1ba201028)
+      0x00007fa1ba000000 (0x00007fa1ba001028-0x00007fa1ba001028)
+      0x00007fa1b9e00000 (0x00007fa1b9e01028-0x00007fa1b9e01028)
+      0x00007fa1b9c00000 (0x00007fa1b9c01028-0x00007fa1b9c01028)
+      0x00007fa1b9a00000 (0x00007fa1b9a01028-0x00007fa1b9a01028)
+      0x00007fa1b9800000 (0x00007fa1b9801028-0x00007fa1b9801028)
+      0x00007fa1c3500000 (0x00007fa1c3501028-0x00007fa1c3501028)
+
+  [GC nanoseconds:
+    collection: 1184703
+      rootScan: 1150803
+        cheneyScanFromRoots: 458101
+        cheneyScanFromDirtyRoots: 692602
+          promotePinnedObjects: 1200
+          blackenStackRoots: 23500
+          walkThreadLocals: 1400
+          blackenImageHeapRoots: 66300
+          blackenDirtyCardRoots: 200
+          scanGreyObjects: 1057103
+      referenceObjects: 18100
+      releaseSpaces: 15100
+    GCLoad: 1%]]]
