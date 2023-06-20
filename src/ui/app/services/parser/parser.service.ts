@@ -206,7 +206,7 @@ export class ParserService {
       scanner.search("Unused", ":");
 
       isAligned = true;
-      while (scanner.get() != "]") {
+      while (scanner.get() != "[") {
         if (scanner.check("unaligned", "chunks", ":")) {
           isAligned = false;
         }
@@ -234,56 +234,13 @@ export class ParserService {
           entry.timers.set(name, Number(value));
         }
       }
-
-      //alert("Yes")
-
+      
       result.push(entry);
 
       scanner.advance();
     }
 
     return result;
-  }
-
-  private parseSpace(scanner: Scanner) {
-    let space = "";
-    while (scanner.get() != ":") {
-      if (!space) {
-        space += " ";
-      }
-      space += scanner.get();
-      scanner.advance();
-    }
-    scanner.advance();
-
-    this.parseChunks(scanner);
-  }
-
-  private parseChunks(scanner: Scanner) {
-    scanner.search("aligned", ":");
-    if (scanner.get() == "0") {
-      return;
-    }
-    scanner.get()
-
-    scanner.search("aligned", "chunks", ":");
-
-    while (scanner.checkPattern(/0x[a-f0-9]+/)) {
-      const chunk = scanner.get();
-      scanner.advance(4);
-      const chunkTop = scanner.get();
-      scanner.advance(2);
-    }
-
-    if (scanner.expect("unaligned", "chunks", ":")) {
-    } else throw Error;
-
-    while (scanner.checkPattern(/0x[a-f0-9]*/)) {
-      const chunk = scanner.get();
-      scanner.advance(4);
-      const chunkTop = scanner.get();
-      scanner.advance(2);
-    }
   }
 }
 
