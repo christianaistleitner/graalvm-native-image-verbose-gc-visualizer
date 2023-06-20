@@ -10,9 +10,20 @@ export type Data = {
 }
 
 export type Chunks = {
-  gen: string,
-  space: string,
-  isAligned: boolean,
+  gen: Gen | undefined,
+  space: Space | undefined,
   start: string,
   top: string
+  isAligned: boolean,
+}
+
+export enum Gen {
+  Young,
+  Old,
+}
+
+export enum Space {
+  Eden,
+  Survivor,
+  Tenured
 }

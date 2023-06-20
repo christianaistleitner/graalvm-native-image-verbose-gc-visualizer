@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Data } from "../../types/types";
+import { Data, Gen, Space } from "../../types/types";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class ParserService {
       scanner.search("[", "[")
 
       // Collection properties
-      if (scanner.check(/[0-9]*/)) {
+      if (scanner.checkPattern(/[0-9]*/)) {
         entry.timestamp = Number(scanner.get());
         scanner.advance();
       } else continue;
@@ -30,7 +30,7 @@ export class ParserService {
       if (scanner.expect("GC", ":", "before", "epoch", ":")) {
       } else continue;
 
-      if (scanner.check(/[0-9]*/)) {
+      if (scanner.checkPattern(/[0-9]*/)) {
         entry.epoch = Number(scanner.get());
         scanner.advance();
       } else continue;
@@ -44,44 +44,88 @@ export class ParserService {
       scanner.search("Young", "generation", ":")
       scanner.search("Eden", ":")
 
+      let isAligned = true;
       while (scanner.get() != "Survivors") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.before.push({
+            gen: Gen.Young,
+            space: Space.Eden,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
 
       scanner.expect("Survivors", ":");
 
+      isAligned = true;
       while (scanner.get() != "Old") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.before.push({
+            gen: Gen.Young,
+            space: Space.Survivor,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
 
       scanner.search("Old", "generation", ":");
 
+      isAligned = true;
       while (scanner.get() != "Unused") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.before.push({
+            gen: Gen.Old,
+            space: Space.Tenured,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
 
       scanner.search("Unused", ":");
 
+      isAligned = true;
       while (scanner.get() != "]") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.before.push({
+            gen: undefined,
+            space: undefined,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
@@ -95,48 +139,91 @@ export class ParserService {
       scanner.search("Young", "generation", ":")
       scanner.search("Eden", ":")
 
+      isAligned = true;
       while (scanner.get() != "Survivors") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.after.push({
+            gen: Gen.Young,
+            space: Space.Eden,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
 
       scanner.expect("Survivors", ":");
 
+      isAligned = true;
       while (scanner.get() != "Old") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.after.push({
+            gen: Gen.Young,
+            space: Space.Survivor,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
 
       scanner.search("Old", "generation", ":");
 
+      isAligned = true;
       while (scanner.get() != "Unused") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.after.push({
+            gen: Gen.Old,
+            space: Space.Tenured,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
 
       scanner.search("Unused", ":");
 
-      while (scanner.get() != "[") {
-        if (scanner.check(/0x[a-f0-9]+/)) {
-          const chunk = scanner.get();
+      isAligned = true;
+      while (scanner.get() != "]") {
+        if (scanner.check("unaligned", "chunks", ":")) {
+          isAligned = false;
+        }
+        if (scanner.checkPattern(/0x[a-f0-9]+/)) {
+          const start = scanner.get();
           scanner.advance(4);
-          const chunkTop = scanner.get();
+          const top = scanner.get();
+          entry.after.push({
+            gen: undefined,
+            space: undefined,
+            start,
+            top,
+            isAligned
+          })
         }
         scanner.advance();
       }
-
       // Timers
       if (scanner.search("GC", "nanoseconds", ":")) {
         while (scanner.get() != "GCLoad") {
@@ -181,7 +268,7 @@ export class ParserService {
 
     scanner.search("aligned", "chunks", ":");
 
-    while (scanner.check(/0x[a-f0-9]+/)) {
+    while (scanner.checkPattern(/0x[a-f0-9]+/)) {
       const chunk = scanner.get();
       scanner.advance(4);
       const chunkTop = scanner.get();
@@ -191,7 +278,7 @@ export class ParserService {
     if (scanner.expect("unaligned", "chunks", ":")) {
     } else throw Error;
 
-    while (scanner.check(/0x[a-f0-9]*/)) {
+    while (scanner.checkPattern(/0x[a-f0-9]*/)) {
       const chunk = scanner.get();
       scanner.advance(4);
       const chunkTop = scanner.get();
@@ -225,14 +312,23 @@ class Scanner {
     return result;
   }
 
-  check(regex: RegExp): boolean {
+  checkPattern(regex: RegExp): boolean {
     return regex.test(this.get());
   }
 
-  search(...token: string[]): boolean {
+  check(...tokens: string[]): boolean {
+    for (let i = 0; i < tokens.length; i++) {
+      if (this.tokens.at(this.cursor + i) != tokens[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  search(...tokens: string[]): boolean {
     let i = 0;
-    while (i < token.length && this.isNotEmpty()) {
-      if (this.tokens.at(this.cursor) == token[i]) {
+    while (i < tokens.length && this.isNotEmpty()) {
+      if (this.tokens.at(this.cursor) == tokens[i]) {
         i++;
       } else {
         i = 0;
