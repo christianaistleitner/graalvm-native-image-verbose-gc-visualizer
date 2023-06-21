@@ -4,12 +4,12 @@ export type Data = {
   cause: string,
   policy: string;
   type: string,
-  before: Chunks[],
-  after: Chunks[],
+  before: Chunk[],
+  after: Chunk[],
   timers: Map<string, number>
 }
 
-export type Chunks = {
+export type Chunk = {
   gen: Gen | undefined,
   space: Space | undefined,
   start: string,
@@ -18,12 +18,12 @@ export type Chunks = {
 }
 
 export enum Gen {
-  Young,
-  Old,
+  Young = "Young",
+  Old = "Old",
 }
 
 export enum Space {
-  Eden,
-  Survivor,
-  Tenured
+  Eden = "Eden",
+  Survivor = "Survivor",
+  Tenured = "Tenured"
 }

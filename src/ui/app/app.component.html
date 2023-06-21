@@ -1,6 +1,6 @@
 <app-import-file *ngIf="!data" (content)="onLogsAvailable($event)"></app-import-file>
 <ul *ngIf="data" class="sidebar">
-  <li (click)="state=-1" [class.active]="state<0">
+  <li (click)="state=0" [class.active]="state==0">
     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
       <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
       <style>
@@ -27,6 +27,6 @@
   </li>
 </ul>
 <div *ngIf="data" class="content">
-  <app-overview *ngIf="state<0" [data]="data"></app-overview>
-  <app-details *ngIf="state >= 0 && state < data.length" [data]="data" [selected]="state"></app-details>
+  <app-overview *ngIf="state <= 0" [data]="data"></app-overview>
+  <app-details *ngIf="state > 0" [data]="data" [epoch]="state"></app-details>
 </div>
