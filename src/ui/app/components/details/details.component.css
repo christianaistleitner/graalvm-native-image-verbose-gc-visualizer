@@ -1,0 +1,9 @@
+.monospace {
+  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+}
+
+table {
+  width: 100%;
+  border-spacing: 2px;
+  text-align: center;
+}
