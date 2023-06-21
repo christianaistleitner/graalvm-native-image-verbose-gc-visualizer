@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ImportFileComponent } from './components/import-file/import-file.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { NgChartsModule } from 'ng2-charts';
 
@@ -11,7 +10,6 @@ import { NgChartsModule } from 'ng2-charts';
   declarations: [
     AppComponent,
     ImportFileComponent,
-    SidebarComponent,
     OverviewComponent
   ],
   imports: [
