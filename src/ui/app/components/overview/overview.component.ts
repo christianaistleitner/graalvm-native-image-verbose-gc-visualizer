@@ -12,25 +12,31 @@ export class OverviewComponent {
   @Input()
   data: Data[] = []
 
-  public get lineChartData(): ChartConfiguration<'line'>['data'] {
-    const series = new Map<string, number[]>();
+  public get lineChartData(): ChartConfiguration<'line'>['data'][] {
+    const series = new Map<string, Map<string, number>>();
     for (let entry of this.data) {
       entry.timers.forEach((value, key, _) => {
-        const values = series.get(key) ?? [];
-        values.push(value);
-        series.set(key, values);
+        const points = series.get(key) ?? new Map<string, number>();
+        points.set("Epoch " + entry.epoch, value);
+        series.set(key, points);
       })
     }
-    return {
-      labels: this.data.map(it => "Epoch " + it.epoch),
-      datasets: Array.from(series.entries()).map(it => {
-        return {
+    return Array.from(series).map(it => {
+      return {
+        labels: Array.from(it[1].keys()),
+        datasets: [{
           label: it[0],
-          data: it[1],
-          borderDash: [10, 5]
-        }
-      })
-    };
+          data: Array.from(it[1].values()),
+          borderDash: [10, 5],
+          segment: {
+            borderColor: "#0CAFFF",
+            backgroundColor: "#0CAFFF"
+          },
+          borderColor: "#0CAFFF",
+          pointBackgroundColor: "#0CAFFF"
+        }]
+      }
+    });
   }
 
   public lineChartOptions: ChartOptions<'line'> = {

@@ -1,8 +1,8 @@
 <h2>Timers</h2>
-<div style="display: block;">
+<div *ngFor="let chartData of lineChartData" style="display: block;">
   <canvas baseChart width="1000" height="400"
           [type]="'line'"
-          [data]="lineChartData"
+          [data]="chartData"
           [options]="lineChartOptions"
           [legend]="lineChartLegend">
   </canvas>
