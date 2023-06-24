@@ -7,8 +7,8 @@
 }
 
 .sidebar {
-  min-height: 100%;
-  width: 200px;
+  width: 160px;
+  flex-shrink: 0;
   border-right: 2px solid #202020;
 }
 
@@ -21,7 +21,7 @@
 ul.sidebar li {
   box-sizing: border-box;
   margin: 4px;
-  padding: 4px 8px;
+  padding: 6px 8px;
   width: calc(100% - 8px);
   border-radius: 2px;
 
