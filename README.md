@@ -2,7 +2,7 @@ _Project in Software Engineering (339.018) - Johannes Kepler Universität Linz_
 
 # Verbose GC Log Visualizer for GraalVM Native Image
 
-When executing a native image, the options `-XX:+VerboseGC -XX:+PrintGCTimes -XX:+TraceHeapChunks`
+When executing a native image, the options `-XX:+VerboseGC -XX:+PrintGCTimes -XX:+TraceHeapChunks -XX:+PrintHeapShape`
 can be used to print detailed information on garbage collection.
 
 The goal of this Project is to graphically visualize and digest the verbose output and, ultimately,
