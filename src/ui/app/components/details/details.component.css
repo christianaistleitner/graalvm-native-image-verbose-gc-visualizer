@@ -19,3 +19,16 @@ tr:nth-child(2n+3) {
 td, th {
   padding: 8px 4px;
 }
+
+.general-prop {
+  margin-bottom: 4px;
+  color: gray;
+}
+
+.general-prop span {
+  color: white;
+}
+
+.spacer {
+  padding: 8px;
+}
