@@ -28,11 +28,3 @@ td, th {
 .general-prop span {
   color: white;
 }
-
-.spacer {
-  padding: 8px;
-}
-
-.clickable {
-  cursor: pointer;
-}

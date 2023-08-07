@@ -1,0 +1,74 @@
+<h2>Chunk History</h2>
+<p class="general-prop">Selected Chunk: <span>{{chunk}}</span></p>
+<table>
+  <tr>
+    <th>Epoch</th>
+    <th>Action</th>
+    <th>Start</th>
+    <th>Top</th>
+    <th>Type</th>
+    <th>Generation</th>
+    <th>Space</th>
+  </tr>
+  <tr *ngFor="let pair of getChunks(); let i = index" class="monospace">
+    <td>
+      {{i}}
+    </td>
+    <td>
+        <span *ngIf="pair[0] && !pair[1]">
+        Removed
+        </span>
+      <span *ngIf="pair[0] && pair[0]?.space != undefined && pair[1] && pair[1]?.space == undefined">
+          Released
+        </span>
+      <span *ngIf="pair[0] && pair[0]?.space == undefined && pair[1] && pair[1]?.space == undefined">
+          Reserved
+        </span>
+      <span *ngIf="pair[0] && pair[1] && pair[1]?.space != undefined">
+          Modified
+        </span>
+      <span *ngIf="!pair[0] && pair[1]">
+          New
+        </span>
+    </td>
+    <td>{{pair[0]?.start ?? pair[1]?.start}}</td>
+    <td>
+        <span *ngIf="pair[0]?.top">
+          {{ pair[0]?.top }}
+        </span>
+      <span *ngIf="pair[0]?.top && pair[1]?.top && pair[0]?.top != pair[1]?.top">
+          &#10140;
+        </span>
+      <span *ngIf="pair[1]?.top && pair[0]?.top != pair[1]?.top">
+          {{ pair[1]?.top }}
+        </span>
+    </td>
+    <td>
+      <span *ngIf="pair[0] != undefined || pair[1] != undefined">
+          {{ (pair[0]?.isAligned ?? pair[1]?.isAligned) ? "aligned" : "unaligned" }}
+      </span>
+    </td>
+    <td>
+        <span *ngIf="pair[0]?.gen">
+          {{ pair[0]?.gen }}
+        </span>
+      <span *ngIf="pair[0]?.gen && pair[1]?.gen && pair[0]?.gen != pair[1]?.gen">
+          &#10140;
+        </span>
+      <span *ngIf="pair[1]?.gen && pair[0]?.gen != pair[1]?.gen">
+          {{ pair[1]?.gen }}
+        </span>
+    </td>
+    <td>
+        <span *ngIf="pair[0]?.space">
+          {{ pair[0]?.space }}
+        </span>
+      <span *ngIf="pair[0]?.space && pair[1]?.space && pair[0]?.space != pair[1]?.space">
+          &#10140;
+        </span>
+      <span *ngIf="pair[1]?.space && pair[0]?.space != pair[1]?.space">
+          {{ pair[1]?.space }}
+        </span>
+    </td>
+  </tr>
+</table>

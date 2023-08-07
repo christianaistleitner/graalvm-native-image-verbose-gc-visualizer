@@ -6,13 +6,15 @@ import { ImportFileComponent } from './components/import-file/import-file.compon
 import { OverviewComponent } from './components/overview/overview.component';
 import { NgChartsModule } from 'ng2-charts';
 import { DetailsComponent } from './components/details/details.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImportFileComponent,
     OverviewComponent,
-    DetailsComponent
+    DetailsComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

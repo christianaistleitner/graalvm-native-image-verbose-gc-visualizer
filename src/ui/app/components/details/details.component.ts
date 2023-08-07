@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Chunk, Data } from "../../types/types";
 
 @Component({
@@ -6,13 +6,15 @@ import { Chunk, Data } from "../../types/types";
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnChanges {
 
   @Input()
   data: Data[] = []
 
   @Input()
   epoch: number = 0
+
+  selectedChunk: string | undefined = undefined;
 
   getSelectedEntry(): Data {
     return this.data[this.epoch - 1];
@@ -33,5 +35,13 @@ export class DetailsComponent {
       }
     }
     return chunks;
+  }
+
+  openChunkHistory(id: string | undefined) {
+    this.selectedChunk = id;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.selectedChunk = undefined;
   }
 }
