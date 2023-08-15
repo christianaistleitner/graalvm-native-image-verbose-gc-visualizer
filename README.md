@@ -125,9 +125,9 @@ make it easier to understand for users.
     GCLoad: 1%]]]
 ```
 
-## Manual
+## Getting Started
 
-**Step 0:** Run your GraalVM Native Image application using the mentioned verbose GC log flags. \
+**Step 0:** Run your GraalVM Native Image application with the mentioned verbose GC log flags. \
 Here are the commands I used during the presentation:
 
 ```
@@ -142,19 +142,19 @@ native-image HelloWorld
 ./helloworld -XX:+VerboseGC -XX:+PrintGCTimes -XX:+TraceHeapChunks -XX:+PrintHeapShape 2> log.txt
 ```
 
-**Step 1:** Select a log file to load by clicking at the center part of the application.
+**Step 1:** Select a log file to load by clicking in the middle of the application.
 
 ![Screenshot - File Select](screenshots/select-file.png)
 
-**Step 2:** After the log file has been parsed, you'll end up at the overview screen. \
+**Step 2:** After the log file has been parsed, you'll get to the overview screen. \
 It mainly shows all the different timers that were included in the log output.
 
 ![Screenshot - Timers Overview](screenshots/timers-overview.png)
 
-**Step 3:** Further details about a specific garbage collection run are shows after clicking at one of the epoch entries in the sidebar.
+**Step 3:** For more details about a particular garbage collection run, click one of the epoch entries in the sidebar.
 
 ![Screenshot - Epoch Details](screenshots/epoch-details.png)
 
-**Step 4:** The history of a given chunk can be examined by clicking at the watch icon.
+**Step 4:** The history of a particular chunk can be viewed by clicking on the clock rewind icon.
 
 ![Screenshot - Chunk History](screenshots/chunk-history.png)
