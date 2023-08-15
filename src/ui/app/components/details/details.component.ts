@@ -58,8 +58,6 @@ export class DetailsComponent implements OnChanges {
     return "darkslategrey"
   }
 
-  protected readonly Number = Number;
-
   getFillPercentage(it: Chunk) {
     if (it.isAligned) {
       return (Number(it.top) - Number(it.start)) / 1048576 * 100;
