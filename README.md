@@ -124,3 +124,37 @@ make it easier to understand for users.
       releaseSpaces: 88700
     GCLoad: 1%]]]
 ```
+
+## Manual
+
+**Step 0:** Run your GraalVM Native Image application using the mentioned verbose GC log flags. \
+Here are the commands I used during the presentation:
+
+```
+docker run -it --entrypoint sh -v ${PWD}:/demo ghcr.io/graalvm/native-image:22.3.2
+
+cd /demo
+
+javac HelloWorld.java
+
+native-image HelloWorld
+
+./helloworld -XX:+VerboseGC -XX:+PrintGCTimes -XX:+TraceHeapChunks -XX:+PrintHeapShape 2> log.txt
+```
+
+**Step 1:** Select a log file to load by clicking at the center part of the application.
+
+![Screenshot - File Select](screenshots/select-file.png)
+
+**Step 2:** After the log file has been parsed, you'll end up at the overview screen. \
+It mainly shows all the different timers that were included in the log output.
+
+![Screenshot - Timers Overview](screenshots/timers-overview.png)
+
+**Step 3:** Further details about a specific garbage collection run are shows after clicking at one of the epoch entries in the sidebar.
+
+![Screenshot - Epoch Details](screenshots/epoch-details.png)
+
+**Step 4:** The history of a given chunk can be examined by clicking at the watch icon.
+
+![Screenshot - Chunk History](screenshots/chunk-history.png)
