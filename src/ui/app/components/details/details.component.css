@@ -36,3 +36,28 @@ td, th {
 .clickable {
   cursor: pointer;
 }
+
+.chunk-graph {
+  background-color: #202020;
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chunk-graph-item {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+}
+
+.chunk-graph-item:not(:last-child) span:after {
+  content: '▸';
+  margin-left: 18px;
+}
+
+.chunk-graph-item span {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  display: block;
+}

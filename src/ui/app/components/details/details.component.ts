@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Chunk, Data } from "../../types/types";
+import { Chunk, Data, Space } from "../../types/types";
 
 @Component({
   selector: 'app-details',
@@ -43,5 +43,28 @@ export class DetailsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.selectedChunk = undefined;
+  }
+
+  getColor(space: Space | undefined): string {
+    if (space == Space.Eden) {
+      return "limegreen"
+    }
+    if (space == Space.Survivor) {
+      return "orangered"
+    }
+    if (space == Space.Tenured) {
+      return "dodgerblue"
+    }
+    return "darkslategrey"
+  }
+
+  protected readonly Number = Number;
+
+  getFillPercentage(it: Chunk) {
+    if (it.isAligned) {
+      return (Number(it.top) - Number(it.start)) / 1048576 * 100;
+    } else {
+      return 100;
+    }
   }
 }
